@@ -5,6 +5,7 @@
 #topbar {
     z-index: 3;
     position: sticky;
+    display: flex;
     top: 0px;
     left: 0px;
     width: 100%;
@@ -43,17 +44,14 @@ a:hover {
 }
 
 .topbar-left {
-    align-items: flex-start;
-    position: absolute;
-    left: 0;
     height: 100%;
+    left: 0;
 }
 
 .topbar-right {
-    align-items: flex-end;
     position: absolute;
-    right: 0;
     height: 100%;
+    right: 0;
 }
 
 .topbar-seperator {
