@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ReviewMe</title>
+        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="favicon-48.ico" sizes="48x48" />
+        <link rel="icon" href="favicon-64.ico" sizes="64x64" />
+        <script>
+            const scrollToElement = (element) => window.scrollTo({
+                    top: element.getBoundingClientRect().top + window.pageYOffset - 50,
+                    behavior: 'smooth'
+                })
+
+            function tryScrollToHash() {
+                const elem = document.getElementById('jump-' + location.hash.substring(1))
+                if (elem != null)
+                    scrollToElement(elem)
+                else if (location.hash == '#home')
+                    window.scrollTo({top: 0, behavior: 'smooth'})
+            }
+
+            window.addEventListener('hashchange', tryScrollToHash)
+            window.addEventListener('DOMContentLoaded', tryScrollToHash)
+        </script>
+    </head>
+    <body>
+        <nav id="topbar">
+            <div class="topbar-left">
+                <a href="#home"><img src="/assets/reviewme/icon_transparent.png"></a>
+                <a href="#home">ReviewMe</a>
+            </div>
+            <div class="topbar-right">
+                <a class="special" target="_blank" href="https://discord.com/oauth2/authorize?client_id=1251700652632182834">Invite</a>
+                <div class="topbar-seperator"></div>
+                <a href="#quick-setup">Quick Setup</a>
+                <div class="topbar-seperator"></div>
+                <a href="#privacy-policy">Privacy Policy</a>
+                <div class="topbar-seperator"></div>
+                <a href="#terms-and-conditions">Terms and Conditions</a>
+            </div>
+        </nav>
+
+        <div id="banner">
+            <img id="logo" src="/assets/reviewme/icon_transparent.png">
+            <img id="gradient" src="/assets/reviewme/banner.png">
+            <!--<h1>ReviewMe</h1>-->
+            <div id="shower">
+                <img style="animation-delay: -1s; left: 5%;" class="droplet" src="/assets/reviewme/review1.png">
+                <img style="animation-delay: -3.2s; left: 15%;" class="droplet" src="/assets/reviewme/review2.png">
+                <img style="animation-delay: -4.8s; left: 20%;" class="droplet" src="/assets/reviewme/review3.png">
+                <img style="animation-delay: -8.6s; right: 25%;" class="droplet" src="/assets/reviewme/review1.png">
+                <img style="animation-delay: -4.4s; right: 45%;" class="droplet" src="/assets/reviewme/review2.png">
+                <img style="animation-delay: -6.5s; right: 10%;" class="droplet" src="/assets/reviewme/review3.png">
+            </div>
+        </div>
+
+        <div class="seperator"></div>
+
+        <div class="content">
+            <div class="line"></div>
+            <div class="content-block content-block-left">
+                <h1>Reviewing</h1>
+                <span><b>ReviewMe</b> provides a simple way to allow users of your guild to review each other's work, transactions, or otherwise.</span>
+            </div>
+            <div class="content-block content-block-right">
+                <h1>Portfolios</h1>
+                <span>Alongside reviews, users can make basic <b>portfolios</b> that can include images and discord markdown formatting.</span>
+            </div>
+            <div class="content-block content-block-left">
+                <h1>Customization</h1>
+                <span>Furthermore, admins can customize the <b>embed</b> format, changing the title, body, 3 fields, and the footer's contents all using templates to stylize it more based on the guild.</span>
+            </div>
+            <div class="content-block content-block-right">
+                <h1>Administration</h1>
+                <span>Finally, admins can <b>remove</b> reviews, add <b>cooldowns</b>, manage which <b>roles</b> can be reviewed or can review at all, and change message styling.</span>
+            </div>
+        </div>
+
+        <div class="seperator"></div>
+        
+        <div id="jump-invite"></div>
+        <div class="content">
+            <div class="content-block content-block-small">
+                <a href="https://discord.com/oauth2/authorize?client_id=1251700652632182834"><h1 class="special centered">Invite Bot</h1></a>
+            </div>
+        </div>
+
+        <div class="seperator"></div>
+        
+        <div id="jump-quick-setup"></div>
+        <div class="content">
+            <div class="content-block content-block-small">
+                <h1>Quick Setup</h1>
+                <span>These speedy steps will help get you on your merry way!</span>
+            </div>
+            <div class="sub-content">
+                <div class="line"></div>
+                <div class="content-block content-block-left">
+                    <h1>Setup Roles</h1>
+                    <span><b>Roles</b> provide a way to seperate reviewees (the provider) from reviewers (the client/customer). In some cases, you may want to only allow certain roles to be reviewed, or only allow certain roles to review at all.
+                        <br /><br />To configure this, use <b><u>/admin role reviewee</u></b> to add users that can be reviewed, and use <b><u>/admin role reviewer</u></b> to change who can create reviews (or alternatively, just remove permissions to run the <b><u>/review</u></b> command as described later)
+                        <br /><br /><i>By default, no roles are required to review or be reviewed.</i></span>
+                </div>
+                <div class="content-block content-block-right">
+                    <h1>Setup Commands</h1>
+                    <span><b>Slash Commands</b> are an amazing discord feature in such that: you can configure where you want commands to be ran.
+                        To change this, navigate to <b>Server Settings > Integrations > ReviewMe</b> to change where commands can be run, and by who (for role locking). This is for the case where you might have a <b>#reviews</b> channel or likewise.</span>
+                </div>
+                <div class="content-block content-block-left">
+                    <h1>Setup Embed</h1>
+                    <span><b>Embeds</b> are the magic behind good looking experiences, and you can configure your own using <b><u>/admin setting embed [section]</u></b>.
+                        <br /><br />The embeds use a "templating" system, where-as you provide tokens such as {reviewee} and once it renders the embed, it will replace those tokens with actual data. Here's a list of all available tokens:
+                        <ul>
+                            <li><b>{reviewee}</b> - <i>The reviewee's nickname</i></li>
+                            <li><b>{reviewer}</b> - <i>The reviewer's nickname</i></li>
+                            <li><b>{@reviewee}</b> - <i>The reviewee's mention</i></li>
+                            <li><b>{@reviewee}</b> - <i>The reviewer's mention</i></li>
+                            <li><b>{rating}</b> - <i>The reviewer's rating as 5 star emojis and a number</i></li>
+                            <li><b>{service}</b> - <i>The reviewer's product/service</i></li>
+                            <li><b>{review}</b> - <i>The reviewer's review</i></li>
+                        </ul></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="seperator"></div>
+        
+        <div id="jump-privacy-policy"></div>
+        <div class="content">
+            <div class="content-block content-block-small">
+                <h1>Privacy Policy</h1>
+                <span>ReviewMe and its creators, namely <i>Command_Storm</i> (also known as <i>AfterAStorm</i>), may collect data about guilds or their members only for the usage of the bot.<br /><br />This policy can also be viewed through the <u>/about</u> slash command.</span>
+            </div>
+            <div class="content-block">
+                <h2>Information collected</h2>
+                <span>ReviewMe and its creators collects the following information (formatted as "Definition" and "Purpose"):<br />
+                    <ul>
+                        <li>
+                            <b>User Id</b>
+                            <ul>
+                                <li>A way to differenciate Discord users.</li>
+                                <li>Used for: storing reviews, storing portfolios</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>Guild Id</b>
+                            <ul>
+                                <li>A way to differenciate Discord guilds.</li>
+                                <li>Used for: storing reviews, storing portfolios, storing settings</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>Role Id</b>
+                            <ul>
+                                <li>A way to differenciate Discord roles.</li>
+                                <li>Used for: storing settings</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    Reviews and other user-input text <b>is not</b> encrypted, but ideally you, a user, wouldn't include any personable or regrettable data within.
+                </span>
+            </div>
+            <div class="content-block content-block-small">
+                <h2>Data removal</h2>
+                <span>When a guild is deleted, the bot is kicked, or the bot leaves on its own, (all of this assuming it's online) all data associated with the guild will be lost and forgotten (including reviews).</span>
+                <span>For user data removal, contact the developer from the Discord support server located <a class="special" href="discord.gg/pyWWyVy6NR">here.</a></span>
+            </div>
+        </div>
+
+        <div class="seperator"></div>
+
+        <div id="jump-terms-and-conditions"></div>
+        <div class="content">
+            <div class="content-block content-block-small">
+                <h1>Terms and Conditions</h1>
+                <span>ReviewMe and its creators, will, to their best ability, keep the bot online and operating within reality.<br /><br />You, as a user, are expected to keep reviews appropriate, as: Any offensive or abusive user-input text will be dealt with accordingly by server admins, or, for extreme cases, by the ReviewMe creators.</span>
+            </div>
+        </div>
+
+        <div class="seperator"></div>
+
+    </body>
+</html>

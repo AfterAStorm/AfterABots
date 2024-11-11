@@ -1,0 +1,28 @@
+/* main.css */
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+html, body {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+div, img {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+ul, li {
+    margin: revert !important;
+    border: revert !important;
+    padding: revert !important;
+}

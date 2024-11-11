@@ -1,0 +1,237 @@
+/* style.css */
+
+/* nav */
+
+#topbar {
+    z-index: 3;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 30px;
+    background-color: #ffd2d0;
+    border-bottom: solid 5px #cbaaa89d;
+    box-shadow: 0px 0px 20px 2px #cbaaa89d;
+}
+
+#topbar > * {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#topbar > * > * {
+    font-family: monospace;
+    font-size: 1rem;
+    display: flex;
+    height: 100%;
+    margin-right: 10px;
+    line-height: 2rem;
+}
+
+#topbar > * > div {
+    background-color: #cbaaa89d;
+}
+
+.topbar-left {
+    align-items: flex-start;
+    position: absolute;
+    left: 0;
+    height: 100%;
+}
+
+.topbar-right {
+    align-items: flex-end;
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+
+.topbar-seperator {
+    height: 70% !important;
+    width: 2px;
+}
+
+.special {
+    color: #9225c5af;
+}
+
+.centered {
+    text-align: center;
+    width: 100%;
+}
+
+/* banner */
+
+#banner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 17 / 6;
+}
+
+#logo {
+    z-index: 1;
+    position: absolute;
+    width: auto;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 50%;
+    aspect-ratio: 1 / 1;
+    transition: .5s ease-out;
+}
+
+#logo:hover {
+    transform: translate(-50%, -50%) scale(115%, 115%);
+}
+
+#gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/*#banner > h1 {
+    position: absolute;
+    top: 7.5%;
+    font-size: 3.5svw;
+    opacity: 50%;
+    width: 100%;
+    font-family: monospace;
+    background: none;
+    text-align: center;
+}*/
+
+/* banner shower */
+
+#shower {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@keyframes precipitate {
+    from { top: -100%; }
+    to { top: 100%; }
+}
+
+.droplet {
+    bottom: 100%;
+    position: absolute;
+    width: 10%;
+    height: auto;
+    background-size: cover;
+    animation: precipitate 10s linear forwards infinite;
+    z-index: 2;
+    opacity: 80%;
+}
+
+/* content */
+
+@keyframes fadein {
+    from { opacity: 0%; }
+    to { opacity: 100%; }
+}
+
+.seperator {
+    width: 100%;
+    height: 5px;
+    background-color: #cbaaa89d;
+    box-shadow: 0px 0px 20px 2px #cbaaa89d;
+}
+
+.content {
+    font-family: monospace;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.sub-content {
+    position: relative;
+}
+
+.content-block {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: 10px;
+    width: calc(100% - 30px);
+    background-color: #dddddd;
+    padding: 5px;
+    border-radius: 15px;
+    min-height: 8rem;
+    box-shadow: 5px 2px 20px 0px #dddddd;
+}
+
+.content-block-small {
+    min-height: 1rem;
+}
+
+.content-block-left, .content-block-right {
+    width: calc(50% - 20px - 20px);
+}
+
+.content-block-left {
+    margin-right: auto;
+}
+
+.content-block-right {
+    margin-left: auto;
+}
+
+.content-block-left::after, .content-block-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translate(-25%, -50%);
+    border-radius: 100%;
+    background-color: #dddddd;
+    width: 20px;
+    height: 20px;
+}
+
+.content-block-left::after {
+    right: calc(-20px - 10px - 5px); /* -20px to negate the width offset from the content, -10px to negate the circle's radius, -5px to negate padding */
+}
+
+.content-block-right::after {
+    left: calc(-20px - 5px); /* -20px to negate the width offset from the content, -5px to negate padding ;; circle's radius is already accounted for b/c it's from the oppoosite side */
+}
+
+.content-block > * {
+    animation: fadein 1s ease 0s 1 forwards;
+}
+
+.content-block > h1 {
+    font-size: 2.7svb;
+}
+
+.content-block > h2 {
+    font-size: 2svb;
+}
+
+.content-block > span {
+    font-size: 1.8svb;
+}
+
+.line {
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #dddddd;
+    box-shadow: 5px 2px 20px 0px #dddddd;
+}
